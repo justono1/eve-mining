@@ -3,7 +3,7 @@ var EveCentral = require('EveCentral');
 
 var Dashboard = React.createClass({
     runfunction: function() {
-      EveCentral.getPrice(22).then(function(data) {
+      EveCentral.getPrice(22, 'buy').then(function(data) {
         console.log(data);
       }, function(err) {
         console.error(err);
