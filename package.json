@@ -11,6 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.9.1",
+    "cookie-parser": "^1.4.3",
     "eve-singlesignon": "0.0.5",
     "express": "^4.13.4",
     "firebase": "^3.0.2",
