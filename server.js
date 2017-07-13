@@ -10,7 +10,7 @@ var scopeList = "characterLocationRead corporationAssetsRead corporationMembersR
 //App Info
 const CLIENT_ID = "fadf0e3d29e44d3db29a9865df475afc";
 const SECRET_KEY = "gZzLKA0BS45mvrrsHRtS9qIIeu8Rc4jovlWs9wkX";
-const CALLBACK_URL = "http://localhost:3000/auth_callback";
+const CALLBACK_URL = "https://eve-mining-op.herokuapp.com/auth_callback";
 const SCOPES = scopeList;
 
 const sso = new SingleSignOn(CLIENT_ID, SECRET_KEY, CALLBACK_URL);
@@ -26,7 +26,7 @@ app.get('/login', function(req, res) {
 app.get('/auth_callback', function(req, res) {
     // Get an access token for this authorization code
     sso.getAccessToken(req.query.code).then(result => {
-        
+
         // The result contains the access token and expiry time
         console.log('Access Token:', result.access_token);
         console.log('Refresh Token:', result.refresh_token);
