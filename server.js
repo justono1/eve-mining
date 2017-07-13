@@ -27,35 +27,28 @@ app.get('/login', function(req, res) {
 });
 
 app.get('/auth_callback', function(req, res) {
-    var access_token_cookie = req.cookies.access_token;
-    var refresh_token_cookie = req.cookies.refresh_token;
-    if(access_token_cookie === undefined) {
-      sso.getAccessToken(req.query.code).then(result => {
-        res.cookie('access_token', result.access_token, {
-          maxAge: new Date(Date.now() + result.expires_in)
+  var refresh_token_cookie = req.cookies.refresh_token;
+  if(refresh_token_cookie === undefined) {
+    sso.getAccessToken(req.query.code).then(result => {
+      if(refresh_token_cookie === undefined) {
+        res.cookie('refresh_token', result.refresh_token, {
+          expires: new Date(Date.now() + (30*24*60*60*1000))
         });
+      }
 
-        if(refresh_token_cookie === undefined) {
-          res.cookie('refresh_token', result.refresh_token, {
-            maxAge: new Date(Date.now() + 900000)
-          });
-        }
+      res.redirect('/');
+        // The result contains the access token and expiry time
+        // console.log('Access Token:', result.access_token);
+        // console.log('Refresh Token:', result.refresh_token);
+        // console.log('Expires in:', result.expires_in);
+        // Store the access token so you can use it later
 
-        res.redirect('/');
-          // The result contains the access token and expiry time
-          // console.log('Access Token:', result.access_token);
-          // console.log('Refresh Token:', result.refresh_token);
-          // console.log('Expires in:', result.expires_in);
-          // Store the access token so you can use it later
-
-          // Access basic character info
-          // return sso.verifyAccessToken(result.access_token);
-      }).catch((err) => {
-        console.log('There was an error');
-      });
-
-    }
-
+        // Access basic character info
+        // return sso.verifyAccessToken(result.access_token);
+    }).catch((err) => {
+      console.log('There was an error');
+    });
+  }
 });
 
 // .then(result => {
