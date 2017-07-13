@@ -43,6 +43,8 @@ app.get('/auth_callback', function(req, res) {
     }, err => {
         // An error occurred
     });
+
+    return res.redirect('/');
 });
 
 app.use(function(req, res, next) {
