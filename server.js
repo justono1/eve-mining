@@ -32,7 +32,7 @@ app.get('/auth_callback', function(req, res) {
     if(access_token_cookie === undefined) {
       sso.getAccessToken(req.query.code).then(result => {
         res.cookie('access_token', result.access_token, {
-          maxAge: result.expires_in
+          maxAge: new Date(Date.now() + result.expires_in)
         });
 
         if(refresh_token_cookie === undefined) {
