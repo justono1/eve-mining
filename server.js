@@ -11,7 +11,7 @@ var scopeList = "characterLocationRead corporationAssetsRead corporationMembersR
 //App Info
 const CLIENT_ID = "fadf0e3d29e44d3db29a9865df475afc";
 const SECRET_KEY = "gZzLKA0BS45mvrrsHRtS9qIIeu8Rc4jovlWs9wkX";
-const CALLBACK_URL = "https://eve-mining-op.herokuapp.com/auth_callback";
+const CALLBACK_URL = "http://eve-mining-op.herokuapp.com/auth_callback";
 const SCOPES = scopeList;
 
 const sso = new SingleSignOn(CLIENT_ID, SECRET_KEY, CALLBACK_URL);
@@ -61,7 +61,7 @@ app.get('/auth_callback', function(req, res) {
 
 app.use(function(req, res, next) {
   if(req.headers['x-forwarded-proto'] === 'https') {
-    res.redirect('https://' + req.hostname + req.url);
+    res.redirect('http://' + req.hostname + req.url);
   } else {
     next();
   }
