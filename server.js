@@ -27,14 +27,14 @@ app.get('/login', function(req, res) {
 });
 
 app.get('/auth_callback', function(req, res) {
-  // var refresh_token_cookie = req.cookies.refresh_token;
-  // if(refresh_token_cookie === undefined) {
+  var refresh_token_cookie = req.cookies.refresh_token;
+  if(refresh_token_cookie === undefined) {
     sso.getAccessToken(req.query.code).then(result => {
-      localStorage.setItem('request_token', result.refresh_token);
-    // res.cookie('refresh_token', result.refresh_token, {
-    //   expires: new Date(Date.now() + (30*24*60*60*1000))
-    // });
-    res.redirect('/');
+      res.cookie('refresh_token', result.refresh_token, {
+        expires: new Date(Date.now() + (30*24*60*60*1000))
+      });
+
+      res.redirect('/');
         // The result contains the access token and expiry time
         // console.log('Access Token:', result.access_token);
         // console.log('Refresh Token:', result.refresh_token);
@@ -46,7 +46,7 @@ app.get('/auth_callback', function(req, res) {
     }).catch((err) => {
       console.log('There was an error');
     });
-  // }
+  }
 });
 
 // .then(result => {
