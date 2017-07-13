@@ -15,7 +15,7 @@ console.log(Cookies.get('request_token'));
 
 module.exports = {
   getFleetMembers: function(fleetID) {
-console.log(Cookies.get('request_token'));
+    console.log(Cookies.get('request_token'));
     // sso.getAccessToken(localStorage.getItem('request_token')).then(result => {
     //   var baseRequest = `/fleets/${fleetID}/members/${BASE_URL_PREDICATE}&token=${result.access_token}`;
     //   var requestUrl = `${BASE_URL_PREFIX}${baseRequest}`;
