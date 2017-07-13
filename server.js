@@ -27,12 +27,20 @@ app.get('/login', function(req, res) {
 });
 
 app.get('/auth_callback', function(req, res) {
-  var refresh_token_cookie = req.cookies.refresh_token;
-  if(refresh_token_cookie === undefined) {
+  var access_token_cookie = req.cookies.access_token;
+  if(access_token_cookie === undefined) {
     sso.getAccessToken(req.query.code).then(result => {
-      res.cookie('refresh_token', result.refresh_token, {
-        expires: new Date(Date.now() + (30*24*60*60*1000))
+      
+      res.cookie('access_token', result.access_token, {
+        expires: new Date(Date.now() + result.expires_in)
       });
+
+      if(req.cookies.request_token === undefined) {
+        res.cookie('refresh_token', result.refresh_token, {
+          expires: new Date(Date.now() + (30*24*60*60*1000))
+        });
+      }
+
 
       res.redirect('/');
         // The result contains the access token and expiry time
