@@ -1,13 +1,13 @@
 {
-  "name": "boilerplate",
+  "name": "eve-mining-app",
   "version": "1.0.0",
-  "description": "Simple react app",
+  "description": "EVE Online auotmated minin tracker for fleet bosses",
   "main": "index.js",
   "scripts": {
     "test": "karma start",
     "start": "node server.js"
   },
-  "author": "Andrew Mead",
+  "author": "Justin Gauthier",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.9.1",

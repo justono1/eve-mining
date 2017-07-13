@@ -26,10 +26,14 @@ module.exports = {
       'node_modules',
       './app/components',
       './app/api',
-      './app/config'
+      './app/config',
+      './app/logic'
     ],
     alias: {
       applicationStyles: 'app/styles/app.scss',
+      actions: 'app/actions/actions.jsx',
+      reducers: 'app/reducers/reducers.jsx',
+      configureStore: 'app/store/configureStore.jsx'
     },
     extensions: ['', '.js', '.jsx']
   },

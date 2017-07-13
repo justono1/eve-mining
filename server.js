@@ -26,8 +26,10 @@ app.get('/login', function(req, res) {
 app.get('/auth_callback', function(req, res) {
     // Get an access token for this authorization code
     sso.getAccessToken(req.query.code).then(result => {
+        
         // The result contains the access token and expiry time
         console.log('Access Token:', result.access_token);
+        console.log('Refresh Token:', result.refresh_token);
         console.log('Expires in:', result.expires_in);
         // Store the access token so you can use it later
 
