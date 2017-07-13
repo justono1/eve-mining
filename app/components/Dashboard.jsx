@@ -12,7 +12,7 @@ var Dashboard = React.createClass({
     return(
       <div>
         <h2>Dashboard Component</h2>
-        <button onClick={this.getFleet}>Log Fleet</button>
+        <button onClick={this.getFleet}>Log Fleet Stuff</button>
       </div>
     );
   }
