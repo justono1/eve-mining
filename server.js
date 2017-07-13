@@ -37,7 +37,7 @@ app.get('/auth_callback', function(req, res) {
         return sso.verifyAccessToken(result.access_token);
     })
     .then(result => {
-      var charInfo = ["characterID": result.CharacterID, "characterName": result.CharacterName];
+      var charInfo = [result.CharacterID, result.CharacterName];
       localStorage.setItem('charInfo', JSON.stringify(charInfo));
         // We now have some basic info...
         console.log('Character ID:', result.CharacterID);
