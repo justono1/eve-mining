@@ -1,7 +1,7 @@
 var axios = require('axios');
-var {Cookies} = require('react-cookie');
+// var cookie = require('react-cookies');
 
-var access_token = Cookies.get('access_token');
+// var access_token = cookie.load('access_token');
 
 module.exports = {
   getFleetMembers: function(fleetID) {
