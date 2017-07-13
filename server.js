@@ -37,14 +37,17 @@ app.get('/auth_callback', function(req, res) {
         return sso.verifyAccessToken(result.access_token);
     })
     .then(result => {
+      var charInfo = ["characterID": result.CharacterID, "characterName": result.CharacterName];
+      localStorage.setItem('access', JSON.stringify(charInfo));
         // We now have some basic info...
         console.log('Character ID:', result.CharacterID);
         console.log('Character Name:', result.CharacterName);
+
+        return res.redirect('/');
     }, err => {
         // An error occurred
     });
 
-    return res.redirect('/');
 });
 
 app.use(function(req, res, next) {
