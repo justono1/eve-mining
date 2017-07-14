@@ -27,8 +27,8 @@ app.get('/login', function(req, res) {
 });
 
 app.get('/refresh_token', function(req, res) {
-  console.log(req.cookies.refresh_token);
-  // sso.getAccessToken(true, req.cookies.refresh_token).then(result => {
+  console.log(req.cookies);
+  // sso.getAccessToken(req.cookies.refresh_token, true).then(result => {
   //   res.json({accessToken: result.access_token});
   // });
 });
@@ -42,7 +42,7 @@ app.get('/auth_callback', function(req, res) {
         expires: new Date(Date.now() + (1000*60*19))
       });
 
-      if(req.cookies.request_token === undefined) {
+      if(req.cookies.refresh_token === undefined) {
         res.cookie('refresh_token', result.refresh_token, {
           expires: new Date(Date.now() + (30*24*60*60*1000))
         });
