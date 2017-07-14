@@ -27,7 +27,7 @@ app.get('/login', function(req, res) {
 });
 
 app.get('/refresh_token', function(req, res) {
-  sso.getAccessToken(req.cookies.refresh_token, true).then(result => {
+  sso.getAccessToken(true, req.cookies.refresh_token).then(result => {
     res.json({accessToken: result.access_token});
   });
 });
