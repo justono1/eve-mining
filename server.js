@@ -27,9 +27,10 @@ app.get('/login', function(req, res) {
 });
 
 app.get('/refresh_token', function(req, res) {
-  sso.getAccessToken(true, req.cookies.refresh_token).then(result => {
-    res.json({accessToken: result.access_token});
-  });
+  console.log(req.cookies.refresh_token);
+  // sso.getAccessToken(true, req.cookies.refresh_token).then(result => {
+  //   res.json({accessToken: result.access_token});
+  // });
 });
 
 app.get('/auth_callback', function(req, res) {
