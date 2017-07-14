@@ -15,17 +15,12 @@ module.exports = {
       return response.json()
     })
     .then(function(responseJson) {
-      console.log(responseJson);
+      var access_token = responseJson.accessToken;
+      var baseRequest = `/fleets/${fleetID}/members/${BASE_URL_PREDICATE}&token=${access_token}`;
+      var requestUrl = `${BASE_URL_PREFIX}${baseRequest}`;
+      return axios.get(requestUrl).then((data) => {
+        console.log(data);
+      });
     });
-    // var baseRequest = `/fleets/${fleetID}/members/${BASE_URL_PREDICATE}&token=${access_token}`;
-    // var requestUrl = `${BASE_URL_PREFIX}${baseRequest}`;
-    //
-    // if(cookie.load('access_token') !== undefined) {
-    //   access_token = cookie.load('access_token');
-    // }
-    //
-    // return axios.get(requestUrl).then((data) => {
-    //   console.log(data);
-    // });
   }
 }
