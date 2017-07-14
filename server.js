@@ -29,6 +29,7 @@ app.get('/login', function(req, res) {
 app.get('/get_token', function(req, res) {
   if(req.cookies.access_token === undefined) {
     sso.getAccessToken(req.cookies.refresh_token, true).then(result => {
+      console.log(result);
       res.cookie('access_token', result.access_token, {
         expires: new Date(Date.now() + (1000*60*19))
       });
