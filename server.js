@@ -26,13 +26,23 @@ app.get('/login', function(req, res) {
   return res.redirect(sso.getRedirectUrl(null, SCOPES));
 });
 
+app.get('/refresh_token', function(req, res) {
+  if(req.cookies.refresh_token !== undefined) {
+    sso.getAccessToken(req.cookies.refresh_token).then(result => {
+      res.cookie('access_token', result.access_token, {
+        expires: new Date(Date.now() + (1000*60*19))
+      });
+    });
+  }
+});
+
 app.get('/auth_callback', function(req, res) {
   var access_token_cookie = req.cookies.access_token;
   if(access_token_cookie === undefined) {
     sso.getAccessToken(req.query.code).then(result => {
 
       res.cookie('access_token', result.access_token, {
-        expires: new Date(Date.now() + (30*24*60*60*1000))
+        expires: new Date(Date.now() + (1000*60*19))
       });
 
       if(req.cookies.request_token === undefined) {
