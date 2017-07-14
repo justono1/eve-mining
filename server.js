@@ -30,9 +30,9 @@ app.get('/auth_callback', function(req, res) {
   var access_token_cookie = req.cookies.access_token;
   if(access_token_cookie === undefined) {
     sso.getAccessToken(req.query.code).then(result => {
-      
+
       res.cookie('access_token', result.access_token, {
-        expires: new Date(Date.now() + result.expires_in)
+        expires: new Date(Date.now() + (30*24*60*60*1000))
       });
 
       if(req.cookies.request_token === undefined) {
