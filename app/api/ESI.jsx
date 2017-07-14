@@ -7,7 +7,7 @@ var BASE_URL_PREDICATE = '?datasource=tranquility&language=en-us';
 
 module.exports = {
   getFleetMembers: function(fleetID) {
-    fetch('/refresh_token', {
+    fetch('/get_token', {
       method: 'GET',
       credentials: 'same-origin'
     })
