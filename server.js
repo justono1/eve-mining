@@ -26,11 +26,17 @@ app.get('/login', function(req, res) {
   return res.redirect(sso.getRedirectUrl(null, SCOPES));
 });
 
-app.get('/refresh_token', function(req, res) {
-  console.log(req.cookies);
-  // sso.getAccessToken(req.cookies.refresh_token, true).then(result => {
-  //   res.json({accessToken: result.access_token});
-  // });
+app.get('/get_token', function(req, res) {
+  if(req.cookies.access_token === undefined) {
+    sso.getAccessToken(req.cookies.refresh_token, true).then(result => {
+      res.cookie('access_token', result.access_token, {
+        expires: new Date(Date.now() + (1000*60*19))
+      });
+      res.json({accessToken: result.access_token});
+    });
+  } else {
+    res.json({accessToken: req.cookies.access_token});
+  }
 });
 
 app.get('/auth_callback', function(req, res) {
