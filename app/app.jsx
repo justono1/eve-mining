@@ -20,6 +20,7 @@ store.subscribe(() => {
 
   console.log('New state', state);
 });
+// 1118511350054
 
 //Initialize State
 var initalInventory = InventoryAPI.getInventory();
