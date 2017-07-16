@@ -42,7 +42,6 @@ module.exports = {
           wing_id: 2146111350054
         }
       ];
-
       resolve(data);
     });
     // fetch('/get_token', {
