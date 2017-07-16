@@ -2,3 +2,4 @@ node_modules/
 Renders/
 Icons 3/
 .DS_Store
+public/bundle.js
