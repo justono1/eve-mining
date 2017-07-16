@@ -9,6 +9,7 @@ var actions = require('actions');
 var store = require('configureStore').configure();
 
 var Main = require('Main');
+var Marketing = require('Marketing');
 
 import Dashboard from 'Dashboard';
 import Inventory from 'Inventory';
@@ -36,7 +37,8 @@ require('style!css!sass!applicationStyles');
 ReactDOM.render(
   <Provider store={store}>
     <Router history={hashHistory}>
-      <Route path="/" component={Main}>
+      <Route path="/" component={Marketing} />
+      <Route path="/app" component={Main}>
         <Route path="inventory" component={Inventory} />
         <IndexRoute component={Dashboard} />
       </Route>
