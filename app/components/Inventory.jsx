@@ -22,7 +22,7 @@ export var Inventory = React.createClass({
     });
   },
   render: function() {
-    var {inventory, inventoryPrice, dispatch} = this.props;
+    var {inventory, inventory_price, dispatch} = this.props;
 
     var renderOreTypes = () => {
       return InventoryAPI.getOre().map((ore) => {
@@ -41,9 +41,9 @@ export var Inventory = React.createClass({
     }
 
     var renderAmount = () => {
-      if(inventoryPrice) {
+      if(inventory_price) {
         return(
-          <p>isk {Math.floor(inventoryPrice).toLocaleString()}</p>
+          <p>isk {Math.floor(inventory_price).toLocaleString()}</p>
         );
       }
     }
@@ -85,7 +85,7 @@ export var Inventory = React.createClass({
 export default connect(
   (state) => {
     return {
-      inventoryPrice: state.inventoryPrice,
+      inventory_price: state.inventory_price,
       inventory: state.inventory
     }
   }

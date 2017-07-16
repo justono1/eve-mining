@@ -1,1 +1,1 @@
-Boilerplate React App
+#EVE Online Mining App
