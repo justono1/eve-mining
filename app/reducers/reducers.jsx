@@ -94,22 +94,34 @@ Manage And Control The actions Regarding Members
 **/
 export var memberReducer = (state = [], action) => {
   switch(action.type) {
+    case 'ADD_FIRST_MEMBERS': //use for the first time fleet import starts ONLY
+      return action.members.map((member) => {
+        return {
+          ...member,
+          member_name: undefined,
+          ship_name: undefined,
+          ship_group_id: undefined,
+          mining_time: 0,
+          ship_points: undefined,
+          in_payout: true
+        }
+      });
     case 'ADD_MEMBER':
       return [
         ...state,
         {
-          ...action.member
+          ...action.member,
         }
       ];
     case 'UPDATE_MEMBER':
       return state.map((member) => {
-        if(member.id === action.id) {
+        if(member.character_id === action.character_id) {
           return {
             ...member,
             ...action.member
           }
         } else {
-          return state;
+          return member;
         }
       });
     case 'REMOVE_MEMBER':

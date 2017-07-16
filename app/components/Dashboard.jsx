@@ -1,33 +1,88 @@
 var React = require('react');
-var cookie = require('react-cookies');
+var {connect} = require('react-redux');
 
+var actions = require('actions');
 var ESI = require('ESI');
 
-var Dashboard = React.createClass({
-  getFleet: function(e) {
-    e.preventDefault();
-    var fleetID = this.refs.fleetID.value;
-    if(fleetID) {
-      ESI.getFleetMembers(fleetID);
-    }
-  },
+import Member from 'Member';
+import FleetControls from 'FleetControls';
+
+export var Dashboard = React.createClass({
   render: function() {
-    console.log(cookie.load('access_token'));
+    var {members, dispatch} = this.props;
+
+    var renderPaidFleetMembers = () => {
+      return members.map((member) => {
+        if(member.in_payout === true) {
+          return(
+            <Member key={member.character_id} {...member} />
+          );
+        }
+      });
+    };
+
+    var renderUnpaidFleetMembers = () => {
+      return members.map((member) => {
+        if(member.in_payout === false) {
+          return(
+            <Member key={member.character_id} {...member} />
+          );
+        }
+      });
+    };
+
     return(
       <div>
-        <h2>Dashboard Component</h2>
-        <form onSubmit={this.getFleet}>
-          <div className="input-group">
-            <span className="input-group-label">FleetID</span>
-            <input className="input-group-field" type="text" ref="fleetID" />
-            <div className="input-group-button">
-              <input type="submit" className="button" value="Get Fleet" />
-            </div>
+        <br />
+        <br />
+        <FleetControls />
+        <br />
+        <div className="row">
+          <div className="small-12 columns">
+            <h4>Paid Members</h4>
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Ship</th>
+                  <th>Mining Time</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {renderPaidFleetMembers()}
+              </tbody>
+            </table>
           </div>
-        </form>
+        </div>
+        <hr />
+        <div className="row">
+          <div className="small-12 columns">
+            <h4>Un-paid Members</h4>
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Ship</th>
+                  <th>Mining Time</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {renderUnpaidFleetMembers()}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     );
   }
 });
 
-module.exports = Dashboard;
+export default connect(
+  (state) => {
+    return {
+      members: state.members
+    }
+  }
+)(Dashboard);

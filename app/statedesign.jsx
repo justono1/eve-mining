@@ -7,7 +7,9 @@ var state = {
   members: [
     {
       id: 12312,
+      name: 'Lord Kampf',
       shipTypeID: 123123,
+      shipName: 'Skiff',
       joinTime: "2016-04-29T12:34:56Z",
       solarSystemID: 123423,
       miningTime: 60, //minutes

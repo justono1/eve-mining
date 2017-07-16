@@ -74,16 +74,22 @@ export var updateInventoryPrice = (value) => {
 /**
 Member Action Generators
 **/
+export var addFirstMembers = (members) => {
+  return {
+    type: 'ADD_FIRST_MEMBERS',
+    members
+  };
+};
 export var addMember = (member) => {
   return {
     type: 'ADD_MEMBER',
     member
   };
 }
-export var updateMember = (id, member) => {
+export var updateMember = (character_id, member) => {
   return {
     type: 'UPDATE_MEMBER',
-    id,
+    character_id,
     member
   };
 }

@@ -9,8 +9,8 @@ var actions = require('actions');
 var store = require('configureStore').configure();
 
 var Main = require('Main');
-var Dashboard = require('Dashboard');
 
+import Dashboard from 'Dashboard';
 import Inventory from 'Inventory';
 
 store.subscribe(() => {

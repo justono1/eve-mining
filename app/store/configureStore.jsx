@@ -3,13 +3,13 @@ var {inventoryReducer, memberReducer, settingsReducer, updateFleetIDReducer, upd
 
 export var configure = (initialState = {}) => {
   var reducer = redux.combineReducers({
-    fleetID: updateFleetIDReducer,
-    fleetLocation: updateFleetLocationReducer,
-    fleetStatus: toggleFleetStatusReducer,
-    characterName: udpateBossNameReducer,
-    characterID: udpateBossIDReducer,
+    fleet_id: updateFleetIDReducer,
+    fleet_location: updateFleetLocationReducer,
+    fleet_status: toggleFleetStatusReducer,
+    character_name: udpateBossNameReducer,
+    character_id: udpateBossIDReducer,
     members: memberReducer,
-    inventoryPrice: updateInventoryPriceReducer,
+    inventory_price: updateInventoryPriceReducer,
     inventory: inventoryReducer,
     settings: settingsReducer
   });
