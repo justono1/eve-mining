@@ -1,7 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var {Provider} = require('react-redux');
-var {Route, Router, Redirect, withRouter, IndexRoute, hashHistory} = require('react-router');
+var {Route, Router, IndexRedirect, IndexRoute, hashHistory} = require('react-router');
 
 var InventoryAPI = require('InventoryAPI');
 
@@ -35,21 +35,9 @@ $(document).foundation();
 require('style!css!sass!applicationStyles');
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route {...rest} render={(props) => {
-    console.log("fuck");
-    if(false) {
-      return(
-        <Component {...props}/>
-      );
-    } else {
-      return(
-        <Redirect to={{
-          pathname: '/app',
-          state: {from: props.location}
-        }}/>
-      );
-    }
-  }}/>
+  <Route {...rest} render={props => (
+    <IndexRedirect to={{ pathname: '/app' }} />
+  )} />
 );
 
 ReactDOM.render(
