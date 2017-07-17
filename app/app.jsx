@@ -35,10 +35,21 @@ $(document).foundation();
 require('style!css!sass!applicationStyles');
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route {...rest} render={(props) => <Redirect to={{
-    pathname: '/app',
-    state: {from: props.location}
-  }}/>}/>
+  <Route {...rest} render={(props) => {
+    console.log("fuck");
+    if(false) {
+      return(
+        <Component {...props}/>
+      );
+    } else {
+      return(
+        <Redirect to={{
+          pathname: '/app',
+          state: {from: props.location}
+        }}/>
+      );
+    }
+  }}/>
 );
 
 ReactDOM.render(
