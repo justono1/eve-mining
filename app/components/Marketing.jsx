@@ -8,7 +8,7 @@ var Marketing = React.createClass({
           <div className="row">
             <div className="small-12 columns">
               <h1>EVE Online Mining App</h1>
-              <p>Use this to tracking mining operations within your fleet.</p>
+              <p>Use this for tracking mining operations within your fleet.</p>
             </div>
           </div>
         </header>

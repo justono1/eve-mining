@@ -17,7 +17,7 @@ var Nav = React.createClass({
           <ul className="menu">
             <li className="menu-text">Eve Mining</li>
             <li><IndexLink to="/app" activeClassName="is-active">Dashboard</IndexLink></li>
-            <li><Link to="app/inventory" activeClassName="is-active">Inventory</Link></li>
+            <li><Link to="/app/inventory" activeClassName="is-active">Inventory</Link></li>
           </ul>
         </div>
         <div className="top-bar-right">
