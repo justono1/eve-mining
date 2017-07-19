@@ -1,5 +1,7 @@
 var React = require('react');
 var {Link, IndexLink} = require('react-router');
+
+var authState = require('authState');
 //
 // <nav>
 //   <ul className="menu">
@@ -10,6 +12,11 @@ var {Link, IndexLink} = require('react-router');
 // </nav>
 
 var Nav = React.createClass({
+  signOut: function() {
+    var {history} = this.props;
+    authState.removeRefreshToken();
+    history.replaceState(null, '/');
+  },
   render: function() {
     return(
       <nav className="top-bar" id="responsive-menu">
@@ -22,7 +29,8 @@ var Nav = React.createClass({
         </div>
         <div className="top-bar-right">
           <ul className="menu">
-            <li><a href="/login" activeClassName="is-active">Login</a></li>
+            <li>Hello, Character Name</li>
+            <li><button className="button" onClick={this.signOut}>Sign Out</button></li>
           </ul>
         </div>
       </nav>

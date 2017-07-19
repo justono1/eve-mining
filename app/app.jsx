@@ -34,18 +34,12 @@ $(document).foundation();
 // App css
 require('style!css!sass!applicationStyles');
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route {...rest} render={props => (
-    <IndexRedirect to={{ pathname: '/app' }} />
-  )} />
-);
-
 ReactDOM.render(
   <Provider store={store}>
     <Router history={hashHistory}>
       <Route path="/" component={Marketing} />
       <Route path="/app" component={Main}>
-        <PrivateRoute path="inventory" component={Inventory} />
+        <Route path="inventory" component={Inventory} />
         <IndexRoute component={Dashboard} />
       </Route>
     </Router>

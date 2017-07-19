@@ -18,7 +18,8 @@ var inventoryCalculator = (allInventory) => {
         resolve(totalPrice);
       });
     } else {
-      reject('Inventory is not an array');
+      console.error('Inventory is not an array');
+      reject();
     }
   });
 };

@@ -1,7 +1,27 @@
 var React = require('react');
+var {IndexLink} = require('react-router');
+
+var authState = require('authState');
 
 var Marketing = React.createClass({
   render: function() {
+    var renderSideBar = () => {
+      if(authState.hasRefreshToken() === false) {
+        return(
+          <div className="callout secondary">
+            <h4>Login</h4>
+            <a href="/login" className="button expanded">Login</a>
+          </div>
+        );
+      } else {
+        return (
+          <div className="callout secondary">
+            <IndexLink to="/app" className="button expanded">Proceed to App</IndexLink>
+          </div>
+        );
+      }
+    };
+
     return(
       <div>
         <header className="section-container">
@@ -32,10 +52,7 @@ var Marketing = React.createClass({
 
             </div>
             <div className="small-12 medium-4 columns">
-              <div className="callout secondary">
-                <h4>Login</h4>
-                <a href="/login" className="button">Login</a>
-              </div>
+              {renderSideBar()}
             </div>
           </div>
         </main>
