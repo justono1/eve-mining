@@ -1,6 +1,6 @@
 import cookie from 'react-cookies';
 
-var auth_token = 'wp-settings-time-1';
+var auth_token = 'refresh_token';
 
 module.exports = {
   hasRefreshToken: function() {
