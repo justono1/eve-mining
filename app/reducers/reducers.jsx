@@ -102,6 +102,7 @@ export var memberReducer = (state = [], action) => {
           ship_name: undefined,
           ship_group_id: undefined,
           mining_time: 0,
+          mining_now: undefined,
           ship_points: undefined,
           in_payout: true
         }

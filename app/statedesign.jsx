@@ -12,8 +12,9 @@ var state = {
       shipName: 'Skiff',
       joinTime: "2016-04-29T12:34:56Z",
       solarSystemID: 123423,
-      miningTime: 60, //minutes
+      miningTime: 60, //seconds
       shipPoints: 20, //value from determining shipID points
+      mining_now: true,
       inPayout: true, //mark for payout or not.
     }
   ],

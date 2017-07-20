@@ -27,8 +27,13 @@ export var FleetControls = React.createClass({
     }
   },
   toggelFleetStatus: function(e) {
-    var {dispatch} = this.props;
+    var {dispatch, members, fleet_status} = this.props;
     dispatch(actions.toggleFleetStatus());
+    members.map((member) => {
+      if(fleet_status === false && member.mining_now === undefined) {
+        dispatch(actions.updateMember(member.character_id, {mining_now: true}));
+      }
+    });
   },
   render: function() {
     var {fleet_id, fleet_status, members} = this.props;

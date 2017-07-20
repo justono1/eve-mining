@@ -1,0 +1,11 @@
+table {
+  table-layout: fixed;
+}
+.member__row {
+  button {
+    margin-right: 5px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

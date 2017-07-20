@@ -1,0 +1,8 @@
+nav.main-nav {
+  a {
+    &.is-active {
+      background: #1779ba;
+      color: #fff;
+    }
+  }
+}

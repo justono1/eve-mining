@@ -39,10 +39,10 @@ var Marketing = React.createClass({
               <p>In this app you will be able to:</p>
               <ul>
                 <li>Track the type of ships in your mining fleet.</li>
-                <li>Track the time that a member has been in fleet and particapting in the mining operations.</li>
+                <li>Track the time that a member has been in fleet and participating in the mining operations.</li>
                 <li>Track ore inventory and calculate price.</li>
                 <li>Manage payout amounts based on ship type.</li>
-                <li>Automatically calculate the payout for each members particapation</li>
+                <li>Automatically calculate the payout for each member's participation</li>
                 <li>Set a corporation tax on the payouts</li>
               </ul>
 
