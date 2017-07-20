@@ -42,6 +42,9 @@ export var Member = React.createClass({
 
     return `${minutes}:${seconds}`;
   },
+  componentDidUpdate: function(prevProps) {
+    console.log("prevProps", prevProps);
+  },
   render: function() {
     var {dispatch, ship_name, member_name, mining_time, mining_now, in_payout, fleet_status} = this.props;
 
