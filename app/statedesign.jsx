@@ -1,33 +1,33 @@
 var state = {
-  fleetID: 123123,
-  fleetLocation: 123123, //solarSystemID,
-  fleetStatus: true, //bool of active or inactive
-  characterName: 'ungodlyzen',
-  characterID: 123123,
+  fleet_id: 123123,
+  fleet_location: 123123, //solarSystemID,
+  fleet_status: true, //bool of active or inactive
+  character_name: 'ungodlyzen',
+  character_id: 123123,
   members: [
     {
       id: 12312,
-      name: 'Lord Kampf',
-      shipTypeID: 123123,
-      shipName: 'Skiff',
-      joinTime: "2016-04-29T12:34:56Z",
-      solarSystemID: 123423,
-      miningTime: 60, //seconds
-      shipPoints: 20, //value from determining shipID points
+      member_name: 'Lord Kampf',
+      ship_type_id: 123123,
+      ship_name: 'Skiff',
+      join_time: "2016-04-29T12:34:56Z",
+      solar_system_id: 123423,
+      mining_time: 60, //seconds
+      ship_points: 20, //value from determining shipID points
       mining_now: true,
-      inPayout: true, //mark for payout or not.
+      in_payout: true, //mark for payout or not.
     }
   ],
-  inventoryPrice: 12312,
+  inventory_price: 12312,
   inventory: [
     {
-      typeID: 1230,
+      type_id: 1230,
       units: 10000
     }
   ],
   settings: [
     {
-      id: 'taxRate',
+      id: 'tax_rate',
       value: 5
     },
     {
@@ -79,7 +79,7 @@ var state = {
       value: 3
     },
     {
-      id: 'superCapital',
+      id: 'super_capital',
       value: 20
     },
     {
@@ -91,7 +91,7 @@ var state = {
       value: 7
     },
     {
-      id: 't2Battlecruiser',
+      id: 't2_battlecruiser',
       value: 9
     },
     {
@@ -99,7 +99,7 @@ var state = {
       value: 5
     },
     {
-      id: 't3Cruiser',
+      id: 't3_cruiser',
       value: 8
     },
     {
